@@ -3,7 +3,7 @@ import { NavBar } from "../navigation/NavBar";
 
 export const Layout = () => {
     return (
-        <div>
+        <div className="flex flex-col h-screen">
             <NavBar />
             <div className="h-full bg-primary">
                 <Outlet />
