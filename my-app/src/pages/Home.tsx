@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGames } from "../api/axios";
+import { GameItem } from "../games/GameItem";
 
 export const HomePage = () => {
     const [games, setGames] = useState<any[]>([]);
@@ -9,21 +10,23 @@ export const HomePage = () => {
             .then(async (res) => {
                 const data = await res.json();
                 setGames(data.results);
-                console.log(data.results);
             })
             .catch((err) => console.log(err));
     }, []);
 
     return (
-        <>
-            {games.map((game) => {
-                console.log(game);
-                return (
-                    <div>
-                        {game.id}, {game.name}
-                    </div>
-                );
-            })}
-        </>
+        <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                {games.map((game) => {
+                    return (
+                        <GameItem
+                            title={game.name}
+                            releaseDate={game.released}
+                            imageLink={game.background_image}
+                        />
+                    );
+                })}
+            </div>
+        </div>
     );
 };

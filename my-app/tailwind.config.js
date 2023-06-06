@@ -19,6 +19,7 @@ module.exports = {
                 1000: "#181009",
                 1110: "#000000",
             },
+            white: "#ffffff",
         },
         extend: {},
     },
